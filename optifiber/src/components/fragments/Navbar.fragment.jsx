@@ -149,21 +149,11 @@ export function NavbarFragmentAll() {
                 <li className="nav-item item">
                     <a
                         className="nav-link d-flex align-items-center item-link"
+                        onClick={() => navigate(`/network/${adminId}`)}
                         role="button">
                         <i className="bi bi-wifi me-2"></i>
                         <span className="item-title">NetWork</span>
                     </a>
-                    <ul className="list-unstyled ps-3 sub-menu">
-                        <li className="ms-4">
-                            <a
-                                className="nav-link"
-                                onClick={() => navigate(`/network/ver/${adminId}`)}
-                                role="button"
-                            >
-                                Ver
-                            </a>
-                        </li>
-                    </ul>
                 </li>
             </ul>
 

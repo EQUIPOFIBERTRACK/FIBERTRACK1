@@ -22,7 +22,9 @@ import CreatePackage from './components/services packages/Create.Packages.jsx';
 import RecoveryPwdComponent from './components/auth/recoveryPwd/recovery.component.jsx';
 import ResetPwdComponent from './components/auth/recoveryPwd/resetPwd.components.jsx';
 import { NavbarFragmentAll } from './components/fragments/Navbar.fragment.jsx';
-import NetworkDevices from './components/network/NetworkDevices.jsx';
+import Radiofrecuencia from './components/network/Radiofrecuencia.jsx';
+import FibraOptica from './components/network/FibraOptica.jsx';
+import Network from './components/network/Network.jsx';
 
 function App() {
   return (
@@ -46,7 +48,9 @@ function App() {
           <Route path='/packageServices/:id' element={<ProtectedRoute> <ServicePackagesComponent /> </ProtectedRoute>}></Route>
           <Route path='/packageServices/create/:id' element={<ProtectedRoute> <CreatePackage /> </ProtectedRoute>}></Route>
           {/* Monitoreo de red */}
-          <Route path='/network/ver/:adminId' element={<NetworkDevices />}></Route>
+          <Route path='/network/:adminId' element={<Network />}></Route>
+          <Route path='/network/radiofrecuencia/:adminId' element={<Radiofrecuencia />}></Route>
+          <Route path='/network/fibra-optica/:adminId' element={<FibraOptica />}></Route>
           {/* Recuperar contraseña */}
           <Route path='/reset-password' element = {<RecoveryPwdComponent />}></Route>
           <Route path='/reset-password-new' element={<ResetPwdComponent />}></Route>
