@@ -1,12 +1,12 @@
 import React from 'react';
 
-const FibraOptica = () => {
+const Radiofrecuencia = () => {
   return (
     <div>
-      <h2>Fibra Óptica</h2>
+      <h2>Radiofrecuencia</h2>
       {/* Add your content here */}
     </div>
   );
 };
 
-export default FibraOptica;
+export default Radiofrecuencia;
