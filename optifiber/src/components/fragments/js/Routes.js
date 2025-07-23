@@ -64,3 +64,13 @@ export const handleResetPassword = (navigate) => {
     const resetPassUrl = '/reset-password-new';
     navigate(resetPassUrl);
 }
+
+export const handleRadiofrecuencia = (navigate, adminId) => {
+    const radioUrl = `/network/radiofrecuencia/${adminId}`;
+    navigate(radioUrl);
+}
+
+export const handleFibraOptica = (navigate, adminId) => {
+    const fibraUrl = `/network/fibra-optica/${adminId}`;
+    navigate(fibraUrl);
+}
