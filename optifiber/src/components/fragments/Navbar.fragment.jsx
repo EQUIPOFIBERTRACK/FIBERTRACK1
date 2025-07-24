@@ -174,10 +174,32 @@ export function NavbarFragmentAll() {
                                 onClick={() => handleRadiofrecuencia(navigate, adminId)}
                                 role="button">Radiofrecuencia</a>
                         </li>
-                        <li className="ms-4">
+                        <li className="ms-4 item">
                             <a className="nav-link"
                                 onClick={() => toggleNestedSubMenu(0)}
                                 role="button">Fibra Optica</a>
+                            <ul className={`list-unstyled ps-3 sub-menu ${activeNestedSubMenu === 0 ? 'nested-sub-menu-active' : ''}`}>
+                                <li className="ms-4">
+                                    <a className="nav-link"
+                                        onClick={() => handleMapaFibra(navigate, adminId)}
+                                        role="button">Mapa</a>
+                                </li>
+                                <li className="ms-4">
+                                    <a className="nav-link"
+                                        onClick={() => handleTopologiaFibra(navigate, adminId)}
+                                        role="button">Topología</a>
+                                </li>
+                                <li className="ms-4">
+                                    <a className="nav-link"
+                                        onClick={() => handleDispositivosFibra(navigate, adminId)}
+                                        role="button">Dispositivos</a>
+                                </li>
+                                <li className="ms-4">
+                                    <a className="nav-link"
+                                        onClick={() => handleLogsFibra(navigate, adminId)}
+                                        role="button">Logs</a>
+                                </li>
+                            </ul>
 
                         </li>
                     </ul>
