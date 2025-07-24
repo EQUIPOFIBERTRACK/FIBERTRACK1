@@ -55,6 +55,7 @@ export const handleCreatePackages = (navigate, adminId) => {
     navigate(servicesUrl);
 }
 
+
 export const handleRecoveryPassword = (navigate) => {
     const recoveryUrl = '/reset-password';
     navigate(recoveryUrl);
