@@ -161,7 +161,7 @@ export function NavbarFragmentAll() {
                                 onClick={() => handleRadiofrecuencia(navigate, adminId)}
                                 role="button">Radiofrecuencia</a>
                         </li>
-                        <li className="ms-4">
+                        <li className="ms-4 item">
                             <a className="nav-link"
                                 onClick={() => handleFibraOptica(navigate, adminId)}
                                 role="button">Fibra Optica</a>
