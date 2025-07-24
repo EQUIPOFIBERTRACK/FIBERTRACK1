@@ -3,7 +3,8 @@ import { useEffect, useState } from 'react';
 
 import { handleHome, handleLogout, handleProfile, handleTicket, handleCreateTicket } from './js/Routes.js';
 import { handleClients, handleCreateClient, handlePayments, handleCreatePayment } from './js/Routes.js';
-import { handlePackages, handleCreatePackages, handleFibraOptica, handleRadiofrecuencia, handleMapaFibra, handleTopologiaFibra, handleDispositivosFibra, handleLogsFibra } from './js/Routes.js';
+import { handlePackages, handleCreatePackages } from './js/Routes.js';
+import { handleRadiofrecuencia, handleFibraOptica, handleMapa, handleTopologia, handleDispositivos, handleLogs } from './js/Routes.js';
 
 export function NavbarFragmentAll() {
     const navigate = useNavigate();
@@ -166,44 +167,64 @@ export function NavbarFragmentAll() {
                         onClick={() => toggleSubMenu(4)}
                         role="button">
                         <i className="bi bi-wifi me-2"></i>
-                        <span className="item-title">NetWork</span>
+                        <span className="item-title">Network</span>
                     </a>
                     <ul className={`list-unstyled ps-3 sub-menu ${activeSubMenu === 4 ? 'sub-menu-active' : ''}`}>
                         <li className="ms-4">
-                            <a className="nav-link"
+                            <a
+                                className="nav-link"
                                 onClick={() => handleRadiofrecuencia(navigate, adminId)}
-                                role="button">Radiofrecuencia</a>
+                                role="button"
+                            >
+                                Radiofrecuencia
+                            </a>
                         </li>
-                        <li className="ms-4 item">
-                            <a className="nav-link"
-                                onClick={() => {
-                                    toggleNestedSubMenu(0)
-                                    handleFibraOptica(navigate, adminId)
-                                }}
-                                role="button">Fibra Optica</a>
-                            <ul className={`list-unstyled ps-3 sub-menu ${activeNestedSubMenu === 0 ? 'nested-sub-menu-active' : ''}`}>
+                        <li className="ms-4">
+                            <a
+                                className="nav-link"
+                                onClick={() => handleFibraOptica(navigate, adminId)}
+                                role="button"
+                            >
+                                Fibra Óptica
+                            </a>
+                            <ul className="list-unstyled ps-3 sub-menu">
                                 <li className="ms-4">
-                                    <a className="nav-link"
-                                        onClick={() => handleMapaFibra(navigate, adminId)}
-                                        role="button">Mapa</a>
+                                    <a
+                                        className="nav-link"
+                                        onClick={() => handleMapa(navigate, adminId)}
+                                        role="button"
+                                    >
+                                        Mapa
+                                    </a>
                                 </li>
                                 <li className="ms-4">
-                                    <a className="nav-link"
-                                        onClick={() => handleTopologiaFibra(navigate, adminId)}
-                                        role="button">Topología</a>
+                                    <a
+                                        className="nav-link"
+                                        onClick={() => handleTopologia(navigate, adminId)}
+                                        role="button"
+                                    >
+                                        Topología
+                                    </a>
                                 </li>
                                 <li className="ms-4">
-                                    <a className="nav-link"
-                                        onClick={() => handleDispositivosFibra(navigate, adminId)}
-                                        role="button">Dispositivos</a>
+                                    <a
+                                        className="nav-link"
+                                        onClick={() => handleDispositivos(navigate, adminId)}
+                                        role="button"
+                                    >
+                                        Dispositivos
+                                    </a>
                                 </li>
                                 <li className="ms-4">
-                                    <a className="nav-link"
-                                        onClick={() => handleLogsFibra(navigate, adminId)}
-                                        role="button">Logs</a>
+                                    <a
+                                        className="nav-link"
+                                        onClick={() => handleLogs(navigate, adminId)}
+                                        role="button"
+                                    >
+                                        Logs
+                                    </a>
                                 </li>
                             </ul>
-
                         </li>
                     </ul>
                 </li>
