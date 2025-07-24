@@ -55,6 +55,7 @@ export const handleCreatePackages = (navigate, adminId) => {
     navigate(servicesUrl);
 }
 
+
 export const handleRecoveryPassword = (navigate) => {
     const recoveryUrl = '/reset-password';
     navigate(recoveryUrl);
@@ -64,6 +65,7 @@ export const handleResetPassword = (navigate) => {
     const resetPassUrl = '/reset-password-new';
     navigate(resetPassUrl);
 }
+
 
 export const handleRadiofrequencia = (navigate, adminId) => {
     navigate(`/network/radiofrequencia/${adminId}`);
@@ -83,4 +85,5 @@ export const handleFibraOpticaDispositivos = (navigate, adminId) => {
 
 export const handleFibraOpticaLogs = (navigate, adminId) => {
     navigate(`/network/fibra-optica/logs/${adminId}`);
+
 }

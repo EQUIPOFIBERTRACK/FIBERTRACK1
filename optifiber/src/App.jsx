@@ -2,7 +2,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import 'bootstrap-icons/font/bootstrap-icons.css';
-import './public/css/Navbar.css';
 import './public/css/App.css'
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
@@ -22,6 +21,7 @@ import CreatePackage from './components/services packages/Create.Packages.jsx';
 import RecoveryPwdComponent from './components/auth/recoveryPwd/recovery.component.jsx';
 import ResetPwdComponent from './components/auth/recoveryPwd/resetPwd.components.jsx';
 import { NavbarFragmentAll } from './components/fragments/Navbar.fragment.jsx';
+
 import Radiofrequencia from './components/network/Radiofrequencia.jsx';
 import FibraOptica from './components/network/FibraOptica.jsx';
 import Mapa from './components/network/fibra-optica/Mapa.jsx';
@@ -52,7 +52,9 @@ function App() {
           <Route path='/packageServices/:id' element={<ProtectedRoute> <ServicePackagesComponent /> </ProtectedRoute>}></Route>
           <Route path='/packageServices/create/:id' element={<ProtectedRoute> <CreatePackage /> </ProtectedRoute>}></Route>
           {/* Monitoreo de red */}
+
           <Route path='/network/radiofrequencia/:adminId' element={<ProtectedRoute><Radiofrequencia /></ProtectedRoute>}></Route>
+
           <Route path='/network/fibra-optica/mapa/:adminId' element={<ProtectedRoute><Mapa /></ProtectedRoute>}></Route>
           <Route path='/network/fibra-optica/topologia/:adminId' element={<ProtectedRoute><Topologia /></ProtectedRoute>}></Route>
           <Route path='/network/fibra-optica/dispositivos/:adminId' element={<ProtectedRoute><Dispositivos /></ProtectedRoute>}></Route>
