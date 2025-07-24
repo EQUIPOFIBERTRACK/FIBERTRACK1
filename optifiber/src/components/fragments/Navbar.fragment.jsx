@@ -166,7 +166,7 @@ export function NavbarFragmentAll() {
                         onClick={() => toggleSubMenu(4)}
                         role="button">
                         <i className="bi bi-wifi me-2"></i>
-                        <span className="item-title">NetWork</span>
+                        <span className="item-title">Network</span>
                     </a>
                     <ul className={`list-unstyled ps-3 sub-menu ${activeSubMenu === 4 ? 'sub-menu-active' : ''}`}>
                         <li className="ms-4">
