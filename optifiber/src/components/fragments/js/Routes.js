@@ -55,6 +55,7 @@ export const handleCreatePackages = (navigate, adminId) => {
     navigate(servicesUrl);
 }
 
+
 export const handleRecoveryPassword = (navigate) => {
     const recoveryUrl = '/reset-password';
     navigate(recoveryUrl);
@@ -66,25 +67,33 @@ export const handleResetPassword = (navigate) => {
 }
 
 export const handleRadiofrecuencia = (navigate, adminId) => {
-    navigate(`/network/radiofrecuencia/${adminId}`);
+    const radioUrl = `/network/radiofrecuencia/${adminId}`;
+    navigate(radioUrl);
 }
 
 export const handleFibraOptica = (navigate, adminId) => {
-    navigate(`/network/fibra-optica/${adminId}`);
+    const fibraUrl = `/network/fibra-optica/${adminId}`;
+    navigate(fibraUrl);
+
 }
 
-export const handleMapa = (navigate, adminId) => {
-    navigate(`/network/fibra-optica/mapa/${adminId}`);
+export const handleMapaFibra = (navigate, adminId) => {
+    const mapaUrl = `/network/fibra-optica/mapa/${adminId}`;
+    navigate(mapaUrl);
 }
 
-export const handleTopologia = (navigate, adminId) => {
-    navigate(`/network/fibra-optica/topologia/${adminId}`);
+export const handleTopologiaFibra = (navigate, adminId) => {
+    const topologiaUrl = `/network/fibra-optica/topologia/${adminId}`;
+    navigate(topologiaUrl);
 }
 
-export const handleDispositivos = (navigate, adminId) => {
-    navigate(`/network/fibra-optica/dispositivos/${adminId}`);
+export const handleDispositivosFibra = (navigate, adminId) => {
+    const dispositivosUrl = `/network/fibra-optica/dispositivos/${adminId}`;
+    navigate(dispositivosUrl);
 }
 
-export const handleLogs = (navigate, adminId) => {
-    navigate(`/network/fibra-optica/logs/${adminId}`);
+export const handleLogsFibra = (navigate, adminId) => {
+    const logsUrl = `/network/fibra-optica/logs/${adminId}`;
+    navigate(logsUrl);
+
 }

@@ -2,7 +2,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import 'bootstrap-icons/font/bootstrap-icons.css';
-import './public/css/Navbar.css';
 import './public/css/App.css'
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
@@ -24,11 +23,11 @@ import ResetPwdComponent from './components/auth/recoveryPwd/resetPwd.components
 import { NavbarFragmentAll } from './components/fragments/Navbar.fragment.jsx';
 import Radiofrecuencia from './components/network/Radiofrecuencia.jsx';
 import FibraOptica from './components/network/FibraOptica.jsx';
-import Mapa from './components/network/Mapa.jsx';
-import Topologia from './components/network/Topologia.jsx';
-import Dispositivos from './components/network/Dispositivos.jsx';
-import Logs from './components/network/Logs.jsx';
-
+import Network from './components/network/Network.jsx';
+import Mapa from './components/network/fibra/Mapa.jsx';
+import Topologia from './components/network/fibra/Topologia.jsx';
+import Dispositivos from './components/network/fibra/Dispositivos.jsx';
+import Logs from './components/network/fibra/Logs.jsx';
 
 function App() {
   return (
@@ -52,12 +51,13 @@ function App() {
           <Route path='/packageServices/:id' element={<ProtectedRoute> <ServicePackagesComponent /> </ProtectedRoute>}></Route>
           <Route path='/packageServices/create/:id' element={<ProtectedRoute> <CreatePackage /> </ProtectedRoute>}></Route>
           {/* Monitoreo de red */}
-          <Route path='/network/radiofrecuencia/:adminId' element={<ProtectedRoute> <Radiofrecuencia /> </ProtectedRoute>}></Route>
-          <Route path='/network/fibra-optica/:adminId' element={<ProtectedRoute> <FibraOptica /> </ProtectedRoute>}></Route>
-          <Route path='/network/fibra-optica/mapa/:adminId' element={<ProtectedRoute> <Mapa /> </ProtectedRoute>}></Route>
-          <Route path='/network/fibra-optica/topologia/:adminId' element={<ProtectedRoute> <Topologia /> </ProtectedRoute>}></Route>
-          <Route path='/network/fibra-optica/dispositivos/:adminId' element={<ProtectedRoute> <Dispositivos /> </ProtectedRoute>}></Route>
-          <Route path='/network/fibra-optica/logs/:adminId' element={<ProtectedRoute> <Logs /> </ProtectedRoute>}></Route>
+          <Route path='/network/:adminId' element={<Network />}></Route>
+          <Route path='/network/radiofrecuencia/:adminId' element={<Radiofrecuencia />}></Route>
+          <Route path='/network/fibra-optica/:adminId' element={<FibraOptica />}></Route>
+          <Route path='/network/fibra-optica/mapa/:adminId' element={<ProtectedRoute><Mapa /></ProtectedRoute>}></Route>
+          <Route path='/network/fibra-optica/topologia/:adminId' element={<ProtectedRoute><Topologia /></ProtectedRoute>}></Route>
+          <Route path='/network/fibra-optica/dispositivos/:adminId' element={<ProtectedRoute><Dispositivos /></ProtectedRoute>}></Route>
+          <Route path='/network/fibra-optica/logs/:adminId' element={<ProtectedRoute><Logs /></ProtectedRoute>}></Route>
           {/* Recuperar contraseña */}
           <Route path='/reset-password' element = {<RecoveryPwdComponent />}></Route>
           <Route path='/reset-password-new' element={<ResetPwdComponent />}></Route>

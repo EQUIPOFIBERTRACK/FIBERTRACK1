@@ -1,11 +1,12 @@
 import React from 'react';
 
-function Radiofrecuencia() {
-    return (
-        <div>
-            <h1>Radiofrecuencia</h1>
-        </div>
-    );
-}
+const Radiofrecuencia = () => {
+  return (
+    <div>
+      <h2>Radiofrecuencia</h2>
+      {/* Add your content here */}
+    </div>
+  );
+};
 
 export default Radiofrecuencia;
