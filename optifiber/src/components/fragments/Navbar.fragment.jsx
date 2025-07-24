@@ -163,7 +163,7 @@ export function NavbarFragmentAll() {
                         </li>
                         <li className="ms-4">
                             <a className="nav-link"
-
+                                onClick={() => handleFibraOptica(navigate, adminId)}
                                 role="button">Fibra Optica</a>
                              <ul className="list-unstyled ps-3 sub-menu">
                                 <li className="ms-4">
