@@ -85,8 +85,14 @@
     transform: scale(1.1);
 }
 
-.item:focus-within .sub-menu,
-.item:hover .sub-menu {
+.sub-menu-active {
+    max-height: 200px;
+    opacity: 1;
+    transform: translateY(0);
+    transition: max-height 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+}
+
+.nested-sub-menu-active {
     max-height: 200px;
     opacity: 1;
     transform: translateY(0);
