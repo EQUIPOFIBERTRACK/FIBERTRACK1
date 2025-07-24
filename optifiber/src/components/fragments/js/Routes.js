@@ -64,3 +64,27 @@ export const handleResetPassword = (navigate) => {
     const resetPassUrl = '/reset-password-new';
     navigate(resetPassUrl);
 }
+
+export const handleRadiofrecuencia = (navigate, adminId) => {
+    navigate(`/network/radiofrecuencia/${adminId}`);
+}
+
+export const handleFibraOptica = (navigate, adminId) => {
+    navigate(`/network/fibra-optica/${adminId}`);
+}
+
+export const handleMapa = (navigate, adminId) => {
+    navigate(`/network/fibra-optica/mapa/${adminId}`);
+}
+
+export const handleTopologia = (navigate, adminId) => {
+    navigate(`/network/fibra-optica/topologia/${adminId}`);
+}
+
+export const handleDispositivos = (navigate, adminId) => {
+    navigate(`/network/fibra-optica/dispositivos/${adminId}`);
+}
+
+export const handleLogs = (navigate, adminId) => {
+    navigate(`/network/fibra-optica/logs/${adminId}`);
+}
