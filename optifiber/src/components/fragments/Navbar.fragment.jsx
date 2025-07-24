@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 
 import { handleHome, handleLogout, handleProfile, handleTicket, handleCreateTicket } from './js/Routes.js';
 import { handleClients, handleCreateClient, handlePayments, handleCreatePayment } from './js/Routes.js';
-import { handlePackages, handleCreatePackages } from './js/Routes.js';
+import { handlePackages, handleCreatePackages, handleRadiofrecuencia, handleFibraOptica, handleMapaFibra, handleTopologiaFibra, handleDispositivosFibra, handleLogsFibra } from './js/Routes.js';
 
 export function NavbarFragmentAll() {
     const navigate = useNavigate();
@@ -149,11 +149,43 @@ export function NavbarFragmentAll() {
                 <li className="nav-item item">
                     <a
                         className="nav-link d-flex align-items-center item-link"
-                        onClick={() => navigate(`/network/${adminId}`)}
                         role="button">
                         <i className="bi bi-wifi me-2"></i>
                         <span className="item-title">NetWork</span>
                     </a>
+                    <ul className="list-unstyled ps-3 sub-menu">
+                        <li className="ms-4">
+                            <a className="nav-link"
+                                onClick={() => handleRadiofrecuencia(navigate, adminId)}
+                                role="button">Radiofrecuencia</a>
+                        </li>
+                        <li className="ms-4">
+                            <a className="nav-link"
+                                role="button">Fibra Optica</a>
+                             <ul className="list-unstyled ps-3 sub-menu">
+                                <li className="ms-4">
+                                    <a className="nav-link"
+                                        onClick={() => handleMapaFibra(navigate, adminId)}
+                                        role="button">Mapa</a>
+                                </li>
+                                <li className="ms-4">
+                                    <a className="nav-link"
+                                        onClick={() => handleTopologiaFibra(navigate, adminId)}
+                                        role="button">Topología</a>
+                                </li>
+                                <li className="ms-4">
+                                    <a className="nav-link"
+                                        onClick={() => handleDispositivosFibra(navigate, adminId)}
+                                        role="button">Dispositivos</a>
+                                </li>
+                                <li className="ms-4">
+                                    <a className="nav-link"
+                                        onClick={() => handleLogsFibra(navigate, adminId)}
+                                        role="button">Logs</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
                 </li>
             </ul>
 
