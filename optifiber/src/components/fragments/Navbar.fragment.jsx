@@ -176,7 +176,10 @@ export function NavbarFragmentAll() {
                         </li>
                         <li className="ms-4 item">
                             <a className="nav-link"
-                                onClick={() => toggleNestedSubMenu(0)}
+                                onClick={() => {
+                                    toggleNestedSubMenu(0)
+                                    handleFibraOptica(navigate, adminId)
+                                }}
                                 role="button">Fibra Optica</a>
                             <ul className={`list-unstyled ps-3 sub-menu ${activeNestedSubMenu === 0 ? 'nested-sub-menu-active' : ''}`}>
                                 <li className="ms-4">
