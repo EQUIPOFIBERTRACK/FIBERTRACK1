@@ -1,12 +1,9 @@
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import styles from '../../public/css/navbar.module.css';
 
 import { handleHome, handleLogout, handleProfile, handleTicket, handleCreateTicket } from './js/Routes.js';
 import { handleClients, handleCreateClient, handlePayments, handleCreatePayment } from './js/Routes.js';
-
-import { handlePackages, handleCreatePackages, handleRadiofrecuencia, handleFibraOptica, handleMapaFibra, handleTopologiaFibra, handleDispositivosFibra, handleLogsFibra } from './js/Routes.js';
-
+import { handlePackages, handleCreatePackages, handleFibraOptica, handleRadiofrecuencia, handleMapaFibra, handleTopologiaFibra, handleDispositivosFibra, handleLogsFibra } from './js/Routes.js';
 
 export function NavbarFragmentAll() {
     const navigate = useNavigate();
