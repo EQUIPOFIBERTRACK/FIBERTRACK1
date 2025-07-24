@@ -4,7 +4,7 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import './public/css/App.css'
 
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom';
 
 import StartComponent from './components/start/Start.component.jsx';
 import HomeComponent from './components/home/Home.component.jsx';
@@ -30,9 +30,12 @@ import Dispositivos from './components/network/fibra/Dispositivos.jsx';
 import Logs from './components/network/fibra/Logs.jsx';
 
 function App() {
+  const location = useLocation();
+  const showNavbar = location.pathname !== '/';
+
   return (
-    <BrowserRouter>
-      <NavbarFragmentAll />
+    <>
+      {showNavbar && <NavbarFragmentAll />}
       <div className="container d-flex content">
         <Routes>
           <Route path='/' Component={StartComponent}></Route>
@@ -63,7 +66,7 @@ function App() {
           <Route path='/reset-password-new' element={<ResetPwdComponent />}></Route>
         </Routes>
       </div>
-    </BrowserRouter>
+    </>
   )
 }
 
