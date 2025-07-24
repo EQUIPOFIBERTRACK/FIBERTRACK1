@@ -1,12 +1,9 @@
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import styles from '../../public/css/navbar.module.css';
 
 import { handleHome, handleLogout, handleProfile, handleTicket, handleCreateTicket } from './js/Routes.js';
 import { handleClients, handleCreateClient, handlePayments, handleCreatePayment } from './js/Routes.js';
-
-import { handlePackages, handleCreatePackages, handleRadiofrecuencia, handleFibraOptica, handleMapaFibra, handleTopologiaFibra, handleDispositivosFibra, handleLogsFibra } from './js/Routes.js';
-
+import { handlePackages, handleCreatePackages, handleFibraOptica, handleRadiofrecuencia, handleMapaFibra, handleTopologiaFibra, handleDispositivosFibra, handleLogsFibra } from './js/Routes.js';
 
 export function NavbarFragmentAll() {
     const navigate = useNavigate();
@@ -162,33 +159,10 @@ export function NavbarFragmentAll() {
                                 onClick={() => handleRadiofrecuencia(navigate, adminId)}
                                 role="button">Radiofrecuencia</a>
                         </li>
-                        <li className="ms-4 item">
+                        <li className="ms-4">
                             <a className="nav-link"
                                 onClick={() => handleFibraOptica(navigate, adminId)}
                                 role="button">Fibra Optica</a>
-                             <ul className="list-unstyled ps-3 sub-menu">
-                                <li className="ms-4">
-                                    <a className="nav-link"
-                                        onClick={() => handleMapaFibra(navigate, adminId)}
-                                        role="button">Mapa</a>
-                                </li>
-                                <li className="ms-4">
-                                    <a className="nav-link"
-                                        onClick={() => handleTopologiaFibra(navigate, adminId)}
-                                        role="button">Topología</a>
-                                </li>
-                                <li className="ms-4">
-                                    <a className="nav-link"
-                                        onClick={() => handleDispositivosFibra(navigate, adminId)}
-                                        role="button">Dispositivos</a>
-                                </li>
-                                <li className="ms-4">
-                                    <a className="nav-link"
-                                        onClick={() => handleLogsFibra(navigate, adminId)}
-                                        role="button">Logs</a>
-                                </li>
-                            </ul>
-
                         </li>
                     </ul>
                 </li>

@@ -3,6 +3,7 @@
 
 .main-menu {
     background: #ededed;
+    z-index: 9999;
     width: 60px;
     transition: width 0.4s ease;
     float: left;
@@ -66,8 +67,7 @@
 
 .sub-menu a {
     font-family: 'Agdasima';
-    color: #404040;
-    font-weight: bold;
+    color: #a8a8a8;
 }
 
 .sub-menu a:hover {
