@@ -1,13 +1,11 @@
 import React from 'react';
-import { Outlet } from 'react-router-dom';
 
-const FibraOptica = () => {
-  return (
-    <div>
-      <h2>Fibra Óptica</h2>
-      <Outlet />
-    </div>
-  );
-};
+function FibraOptica() {
+    return (
+        <div>
+            <h1>Fibra Óptica</h1>
+        </div>
+    );
+}
 
 export default FibraOptica;
