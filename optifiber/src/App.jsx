@@ -25,6 +25,10 @@ import { NavbarFragmentAll } from './components/fragments/Navbar.fragment.jsx';
 import Radiofrecuencia from './components/network/Radiofrecuencia.jsx';
 import FibraOptica from './components/network/FibraOptica.jsx';
 import Network from './components/network/Network.jsx';
+import Mapa from './components/network/fibra/Mapa.jsx';
+import Topologia from './components/network/fibra/Topologia.jsx';
+import Dispositivos from './components/network/fibra/Dispositivos.jsx';
+import Logs from './components/network/fibra/Logs.jsx';
 
 function App() {
   return (
@@ -51,6 +55,10 @@ function App() {
           <Route path='/network/:adminId' element={<Network />}></Route>
           <Route path='/network/radiofrecuencia/:adminId' element={<Radiofrecuencia />}></Route>
           <Route path='/network/fibra-optica/:adminId' element={<FibraOptica />}></Route>
+          <Route path='/network/fibra-optica/mapa/:adminId' element={<ProtectedRoute><Mapa /></ProtectedRoute>}></Route>
+          <Route path='/network/fibra-optica/topologia/:adminId' element={<ProtectedRoute><Topologia /></ProtectedRoute>}></Route>
+          <Route path='/network/fibra-optica/dispositivos/:adminId' element={<ProtectedRoute><Dispositivos /></ProtectedRoute>}></Route>
+          <Route path='/network/fibra-optica/logs/:adminId' element={<ProtectedRoute><Logs /></ProtectedRoute>}></Route>
           {/* Recuperar contraseña */}
           <Route path='/reset-password' element = {<RecoveryPwdComponent />}></Route>
           <Route path='/reset-password-new' element={<ResetPwdComponent />}></Route>
