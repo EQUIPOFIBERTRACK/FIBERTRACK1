@@ -11,12 +11,22 @@ import { handlePackages, handleCreatePackages, handleRadiofrecuencia, handleFibr
 export function NavbarFragmentAll() {
     const navigate = useNavigate();
     const [name, setName] = useState(null);
+    const [activeSubMenu, setActiveSubMenu] = useState(null);
+    const [activeNestedSubMenu, setActiveNestedSubMenu] = useState(null);
     const adminId = sessionStorage.getItem('adminId')
 
     useEffect(() => {
         const name = sessionStorage.getItem('userName');
         setName(name);
-    });
+    }, []);
+
+    const toggleSubMenu = (index) => {
+        setActiveSubMenu(activeSubMenu === index ? null : index);
+    };
+
+    const toggleNestedSubMenu = (index) => {
+        setActiveNestedSubMenu(activeNestedSubMenu === index ? null : index);
+    }
 
     return (
         <nav className="d-flex flex-column position-fixed shadow top-0 left-0 vh-100 px-2 py-3 main-menu">
@@ -44,12 +54,13 @@ export function NavbarFragmentAll() {
                 <li className="nav-item item">
                     <a
                         className="nav-link d-flex align-items-center item-link"
+                        onClick={() => toggleSubMenu(0)}
                         role="button"
                     >
                         <i className="bi bi-people-fill me-2"></i>
                         <span className="item-title">Clientes</span>
                     </a>
-                    <ul className="list-unstyled ps-3 sub-menu">
+                    <ul className={`list-unstyled ps-3 sub-menu ${activeSubMenu === 0 ? 'sub-menu-active' : ''}`}>
                         <li className="ms-4">
                             <a
                                 className="nav-link"
@@ -73,12 +84,13 @@ export function NavbarFragmentAll() {
                 <li className="nav-item item">
                     <a
                         className="nav-link d-flex align-items-center item-link"
+                        onClick={() => toggleSubMenu(1)}
                         role="button"
                     >
                         <i className="bi bi-wallet-fill me-2"></i>
                         <span className="item-title">Pagos</span>
                     </a>
-                    <ul className="list-unstyled ps-3 sub-menu">
+                    <ul className={`list-unstyled ps-3 sub-menu ${activeSubMenu === 1 ? 'sub-menu-active' : ''}`}>
                         <li className="ms-4">
                             <a
                                 className="nav-link"
@@ -102,12 +114,13 @@ export function NavbarFragmentAll() {
                 <li className="nav-item item">
                     <a
                         className="nav-link d-flex align-items-center item-link"
+                        onClick={() => toggleSubMenu(2)}
                         role="button"
                     >
                         <i className="bi bi-clipboard-heart-fill me-2"></i>
                         <span className="item-title">Tickets</span>
                     </a>
-                    <ul className="list-unstyled ps-3 sub-menu">
+                    <ul className={`list-unstyled ps-3 sub-menu ${activeSubMenu === 2 ? 'sub-menu-active' : ''}`}>
                         <li className="ms-4">
                             <a
                                 className="nav-link"
@@ -130,12 +143,13 @@ export function NavbarFragmentAll() {
                 </li>
                 <li className="nav-item item">
                     <a className="nav-link d-flex align-items-center item-link"
+                        onClick={() => toggleSubMenu(3)}
                         role="button">
                         <i className="bi bi-box2-heart-fill me-2"></i>
                         <span className="item-title">Paquetes</span>
                     </a>
 
-                    <ul className="list-unstyled ps-3 sub-menu">
+                    <ul className={`list-unstyled ps-3 sub-menu ${activeSubMenu === 3 ? 'sub-menu-active' : ''}`}>
                         <li className="ms-4">
                             <a className="nav-link"
                                 onClick={() => handlePackages(navigate, adminId)}
@@ -152,11 +166,12 @@ export function NavbarFragmentAll() {
                 <li className="nav-item item">
                     <a
                         className="nav-link d-flex align-items-center item-link"
+                        onClick={() => toggleSubMenu(4)}
                         role="button">
                         <i className="bi bi-wifi me-2"></i>
                         <span className="item-title">NetWork</span>
                     </a>
-                    <ul className="list-unstyled ps-3 sub-menu">
+                    <ul className={`list-unstyled ps-3 sub-menu ${activeSubMenu === 4 ? 'sub-menu-active' : ''}`}>
                         <li className="ms-4">
                             <a className="nav-link"
                                 onClick={() => handleRadiofrecuencia(navigate, adminId)}
@@ -164,9 +179,9 @@ export function NavbarFragmentAll() {
                         </li>
                         <li className="ms-4 item">
                             <a className="nav-link"
-                                onClick={() => handleFibraOptica(navigate, adminId)}
+                                onClick={() => toggleNestedSubMenu(0)}
                                 role="button">Fibra Optica</a>
-                             <ul className="list-unstyled ps-3 sub-menu">
+                            <ul className={`list-unstyled ps-3 sub-menu ${activeNestedSubMenu === 0 ? 'nested-sub-menu-active' : ''}`}>
                                 <li className="ms-4">
                                     <a className="nav-link"
                                         onClick={() => handleMapaFibra(navigate, adminId)}
