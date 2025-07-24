@@ -73,6 +73,7 @@ export const handleRadiofrecuencia = (navigate, adminId) => {
 export const handleFibraOptica = (navigate, adminId) => {
     const fibraUrl = `/network/fibra-optica/${adminId}`;
     navigate(fibraUrl);
+
 }
 
 export const handleMapaFibra = (navigate, adminId) => {
@@ -93,4 +94,5 @@ export const handleDispositivosFibra = (navigate, adminId) => {
 export const handleLogsFibra = (navigate, adminId) => {
     const logsUrl = `/network/fibra-optica/logs/${adminId}`;
     navigate(logsUrl);
+
 }
