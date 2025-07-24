@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 
 import { handleHome, handleLogout, handleProfile, handleTicket, handleCreateTicket } from './js/Routes.js';
 import { handleClients, handleCreateClient, handlePayments, handleCreatePayment } from './js/Routes.js';
-import { handlePackages, handleCreatePackages } from './js/Routes.js';
+import { handlePackages, handleCreatePackages, handleRadiofrecuencia, handleFibraOptica, handleMapaFibra, handleTopologiaFibra, handleDispositivosFibra, handleLogsFibra } from './js/Routes.js';
 
 export function NavbarFragmentAll() {
     const navigate = useNavigate();
@@ -149,7 +149,6 @@ export function NavbarFragmentAll() {
                 <li className="nav-item item">
                     <a
                         className="nav-link d-flex align-items-center item-link"
-                        onClick={() => navigate(`/network/${adminId}`)}
                         role="button">
                         <i className="bi bi-wifi me-2"></i>
                         <span className="item-title">NetWork</span>
