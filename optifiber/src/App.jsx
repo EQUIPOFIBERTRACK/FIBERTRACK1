@@ -22,7 +22,13 @@ import CreatePackage from './components/services packages/Create.Packages.jsx';
 import RecoveryPwdComponent from './components/auth/recoveryPwd/recovery.component.jsx';
 import ResetPwdComponent from './components/auth/recoveryPwd/resetPwd.components.jsx';
 import { NavbarFragmentAll } from './components/fragments/Navbar.fragment.jsx';
-import NetworkDevices from './components/network/NetworkDevices.jsx';
+import Radiofrequencia from './components/network/Radiofrequencia.jsx';
+import FibraOptica from './components/network/FibraOptica.jsx';
+import Mapa from './components/network/fibra-optica/Mapa.jsx';
+import Topologia from './components/network/fibra-optica/Topologia.jsx';
+import Dispositivos from './components/network/fibra-optica/Dispositivos.jsx';
+import Logs from './components/network/fibra-optica/Logs.jsx';
+
 
 function App() {
   return (
@@ -46,7 +52,11 @@ function App() {
           <Route path='/packageServices/:id' element={<ProtectedRoute> <ServicePackagesComponent /> </ProtectedRoute>}></Route>
           <Route path='/packageServices/create/:id' element={<ProtectedRoute> <CreatePackage /> </ProtectedRoute>}></Route>
           {/* Monitoreo de red */}
-          <Route path='/network/ver/:adminId' element={<NetworkDevices />}></Route>
+          <Route path='/network/radiofrequencia/:adminId' element={<ProtectedRoute><Radiofrequencia /></ProtectedRoute>}></Route>
+          <Route path='/network/fibra-optica/mapa/:adminId' element={<ProtectedRoute><Mapa /></ProtectedRoute>}></Route>
+          <Route path='/network/fibra-optica/topologia/:adminId' element={<ProtectedRoute><Topologia /></ProtectedRoute>}></Route>
+          <Route path='/network/fibra-optica/dispositivos/:adminId' element={<ProtectedRoute><Dispositivos /></ProtectedRoute>}></Route>
+          <Route path='/network/fibra-optica/logs/:adminId' element={<ProtectedRoute><Logs /></ProtectedRoute>}></Route>
           {/* Recuperar contraseña */}
           <Route path='/reset-password' element = {<RecoveryPwdComponent />}></Route>
           <Route path='/reset-password-new' element={<ResetPwdComponent />}></Route>
