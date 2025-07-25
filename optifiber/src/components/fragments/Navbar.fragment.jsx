@@ -173,9 +173,7 @@ export function NavbarFragmentAll() {
                         <li className="ms-4">
                             <a
                                 className="nav-link"
-
                                 onClick={() => navigate(`/network/radiofrequencia/${adminId}`)}
-
                                 role="button"
                             >
                                 Radiofrecuencia
@@ -184,8 +182,6 @@ export function NavbarFragmentAll() {
                         <li className="ms-4">
                             <a
                                 className="nav-link"
-
-
                                 role="button"
                             >
                                 Fibra Óptica
@@ -194,9 +190,7 @@ export function NavbarFragmentAll() {
                                 <li className="ms-4">
                                     <a
                                         className="nav-link"
-
                                         onClick={() => navigate(`/network/fibra-optica/mapa/${adminId}`)}
-
                                         role="button"
                                     >
                                         Mapa
@@ -205,9 +199,7 @@ export function NavbarFragmentAll() {
                                 <li className="ms-4">
                                     <a
                                         className="nav-link"
-
                                         onClick={() => navigate(`/network/fibra-optica/topologia/${adminId}`)}
-
                                         role="button"
                                     >
                                         Topología
@@ -216,9 +208,7 @@ export function NavbarFragmentAll() {
                                 <li className="ms-4">
                                     <a
                                         className="nav-link"
-
                                         onClick={() => navigate(`/network/fibra-optica/dispositivos/${adminId}`)}
-
                                         role="button"
                                     >
                                         Dispositivos
@@ -227,9 +217,7 @@ export function NavbarFragmentAll() {
                                 <li className="ms-4">
                                     <a
                                         className="nav-link"
-
                                         onClick={() => navigate(`/network/fibra-optica/logs/${adminId}`)}
-
                                         role="button"
                                     >
                                         Logs
