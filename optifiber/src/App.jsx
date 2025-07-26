@@ -7,6 +7,7 @@ import styles from './components/fragments/css/navbar.module.css';
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
+import LoginComponent from './components/auth/login/Login.component.jsx';
 import StartComponent from './components/start/Start.component.jsx';
 import HomeComponent from './components/home/Home.component.jsx';
 import ProtectedRoute from './components/auth/protectedRoutes.jsx';
@@ -35,6 +36,7 @@ function App() {
     <BrowserRouter>
       <>
         <NavbarFragmentAll />
+        <LoginComponent />
         <div className={styles.content}>
           <Routes>
             <Route path='/' Component={StartComponent}></Route>
