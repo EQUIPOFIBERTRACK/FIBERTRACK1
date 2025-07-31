@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { handleFibraOpticaMapa } from './js/Routes.js';
 
 import { handleHome, handleLogout, handleProfile, handleTicket, handleCreateTicket } from './js/Routes.js';
@@ -9,15 +9,38 @@ import { handlePackages, handleCreatePackages } from './js/Routes.js';
 export function NavbarFragmentAll() {
     const navigate = useNavigate();
     const [name, setName] = useState(null);
-    const adminId = sessionStorage.getItem('adminId')
+    const adminId = sessionStorage.getItem('adminId');
+    const [isHidden, setIsHidden] = useState(false);
+    const lastScrollY = useRef(0);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const currentScrollY = window.scrollY;
+
+            if (currentScrollY > lastScrollY.current && currentScrollY > 10) {
+                // Scrolling down
+                setIsHidden(true);
+            } else {
+                // Scrolling up or at the top
+                setIsHidden(false);
+            }
+            lastScrollY.current = currentScrollY;
+        };
+
+        window.addEventListener('scroll', handleScroll, { passive: true });
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
 
     useEffect(() => {
         const name = sessionStorage.getItem('userName');
         setName(name);
-    });
+    }, []);
 
     return (
-        <nav className="d-flex flex-column position-fixed shadow top-0 left-0 vh-100 px-2 py-3 main-menu">
+        <nav className={`d-flex flex-column position-fixed shadow top-0 left-0 vh-100 px-2 py-3 main-menu ${isHidden ? 'navbar-hidden' : ''}`}>
             <div className="d-flex justify-content-between align-items-center mb-3 header-content">
                 <i className="bi bi-list fs-3"></i>
                 <p
