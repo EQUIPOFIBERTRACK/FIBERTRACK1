@@ -4,8 +4,7 @@ import { getOLTPorts, getNetworkHealthHistory, getDeviceInfo } from '../controll
 
 const router = Router();
 
-router.get('/olt-ports-snmp', getOLTPorts);
-router.get('/network-health-history', getNetworkHealthHistory);
-router.get('/device-info', getDeviceInfo);
+import { getOLTPorts, getNetworkHealthHistory, getDeviceInfo, getGponDevices } from '../controller/network.controller.js';
+router.get('/gpon-devices', getGponDevices);
 
 export default router;

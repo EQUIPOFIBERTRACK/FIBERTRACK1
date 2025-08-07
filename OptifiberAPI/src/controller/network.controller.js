@@ -193,3 +193,35 @@ export function iniciarMonitoreoSalud() {
     }
   }, 5 * 60 * 1000);
 }
+
+export function getGponDevices(req, res) {
+  const session = snmp.createSession(host, community, sessionOptions);
+  const oids = [
+    "1.3.6.1.4.1.5875.800.3.9.3.1.10",
+    "1.3.6.1.4.1.5875.800.3.9.3.1.3",
+    "1.3.6.1.4.1.5875.800.3.9.3.1.6"
+  ];
+
+  session.subtree(oids, (error, varbinds) => {
+    session.close();
+    if (error) return res.status(500).json({ error: error.toString() });
+
+    const devices = {};
+    varbinds.forEach(vb => {
+      const oid = vb.oid.split('.').slice(0, 12).join('.');
+      const index = vb.oid.split('.').slice(12).join('.');
+      if (!devices[index]) {
+        devices[index] = {};
+      }
+      if (oid === "1.3.6.1.4.1.5875.800.3.9.3.1.10") {
+        devices[index].mac = vb.value.toString();
+      } else if (oid === "1.3.6.1.4.1.5875.800.3.9.3.1.3") {
+        devices[index].model = vb.value.toString();
+      } else if (oid === "1.3.6.1.4.1.5875.800.3.9.3.1.6") {
+        devices[index].ip = vb.value.toString();
+      }
+    });
+
+    res.json(Object.values(devices));
+  });
+}
