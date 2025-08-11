@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "cloudinary": "^2.6.1",
     "nodemon": "^3.1.10"
   }
 }

@@ -24,16 +24,7 @@ function ClientDocuments({ client }) {
     }, [makeRequest]);
 
     function documentModal(document, title) {
-        Swal.fire({
-            imageAlt: title,
-            imageUrl: document,
-            showCloseButton: true,
-            showConfirmButton: false,
-            showCancelButton: true,
-            cancelButtonText: 'Cerrar',
-            cancelButtonColor: '#404040',
-            background: '#ededed'
-        })
+        window.open(document, '_blank', 'noopener,noreferrer');
     }
 
     const handleDownload = async (url) => {
