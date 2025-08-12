@@ -24,13 +24,25 @@ function PaymentCard({ payments = [], onSelected }) {
     };
 
     const filteredData = payments.filter(payment => {
-        const folio = payment.Folio?.toString() ?? '';
-        const method = payment.Method ?? '';
+        const folio = payment.Folio?.toString().toLowerCase() || '';
+        const method = payment.Method?.toString().toLowerCase() || '';
+        const amount =(payment.Amount ?? '').toString().toLowerCase();
         const date = payment.CreateDate?.split("T")[0] ?? '';
-        const clientName = `${payment.Client?.Name?.FirstName ?? ''} ${payment.Client?.Name?.SecondName ?? ''} ${payment.Client?.LastName?.FatherLastName ?? ''} ${payment.Client?.LastName?.MotherLastName ?? ''}`.trim();
+        const clientName = `${payment.Client?.Name.FirstName} 
+        ${payment.Client.Name.SecondName || ''} 
+        ${payment.Client.LastName.FatherLastName} 
+        ${payment.Client?.LastName.MotherLastName}`
+        .replace(/\s+/g, ' ').trim()
+        .toLowerCase();
 
-        const combined = `${folio} ${method} ${date} ${clientName}`.toLowerCase();
-        return combined.includes(search.toLowerCase());
+        const searchLower = search.toLowerCase();
+        return (
+            clientName.includes(searchLower) || 
+            folio.includes(searchLower) ||
+            method.includes(searchLower) ||
+            date.includes(searchLower) ||
+            amount.includes(searchLower)
+        );
     });
 
     const sortedData = [...filteredData].sort((a, b) => {
@@ -91,6 +103,9 @@ function PaymentCard({ payments = [], onSelected }) {
                         <th onClick={() => handleHeaderClick('Folio')} style={{ cursor: 'pointer' }}>
                             Folio {sortField === 'Folio' ? (sortOrder === 'asc' ? '↑' : '↓') : ''}
                         </th>
+
+                        <th>Estado</th>
+
                         <th onClick={() => handleHeaderClick('Cliente')} style={{ cursor: 'pointer' }}>
                             Cliente {sortField === 'Cliente' ? (sortOrder === 'asc' ? '↑' : '↓') : ''}
                         </th>
@@ -98,6 +113,8 @@ function PaymentCard({ payments = [], onSelected }) {
                             Método {sortField === 'Método' ? (sortOrder === 'asc' ? '↑' : '↓') : ''}
                         </th>
                         <th>Monto</th>
+                        {/* Nuevo encabezado */}
+                        <th>Creado por</th>
                         <th onClick={() => handleHeaderClick('Fecha')} style={{ cursor: 'pointer' }}>
                             Fecha {sortField === 'Fecha' ? (sortOrder === 'asc' ? '↑' : '↓') : ''}
                         </th>
@@ -109,9 +126,12 @@ function PaymentCard({ payments = [], onSelected }) {
                             key={item._id} onClick={() => onSelected(item)}
                             data-bs-toggle="modal" data-bs-target="#PaymentModal">
                             <td>{item.Folio}</td>
+                            <td>{item.Status}</td>
                             <td>{`${item.Client?.Name?.FirstName ?? ''} ${item.Client?.Name?.SecondName ?? ''} ${item.Client?.LastName?.FatherLastName ?? ''} ${item.Client?.LastName?.MotherLastName ?? ''}`}</td>
                             <td>{item.Method}</td>
                             <td>{item.Amount}</td>
+                            {/* Mostrar el administrador */}
+                            <td>{item.Admin?.UserName ?? 'Sin asignar'}</td>
                             <td>{item.CreateDate?.split("T")[0]}</td>
                         </tr>
                     ))}
