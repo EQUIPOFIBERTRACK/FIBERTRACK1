@@ -1,39 +1,48 @@
-import service from '../models/servicesSchema.js';
+import client from '../models/clientSchema.js';
 
 //Crear servicio
-export const newService = async(req, res) => {
-    const { Name, Price, Description } = req.body;
-    const Admin = req.adminId;
+export const newService = async (req, res) => {
+    const { Client, ...packageData } = req.body;
+
+    if (!Client) {
+        return res.status(400).json({ message: 'Client ID is required' });
+    }
 
     try {
-        const newService = new service({
-            Name,
-            Price,
-            Description,
-            Admin
-        });
+        const clientFound = await client.findById(Client);
 
-        await newService.save();
-        return res.status(201).json({ message: 'New package service created' });
+        if (!clientFound) {
+            return res.status(404).json({ message: 'Client not found' });
+        }
+
+        clientFound.Packages.push(packageData);
+        await clientFound.save();
+
+        return res.status(201).json({ message: 'Package assigned successfully' });
     } catch (error) {
         console.log(error);
         return res.status(500).json({ message: 'Server Error!' });
     }
-}
+};
 
 //Ver todos los servicios
-export const viewAllServices = async(req, res) => {
+export const viewAllServices = async (req, res) => {
     try {
-        const allServices = await service.find()
-            .populate('Admin', 'UserName')
-            .exec();
+        const clients = await client.find({ "Packages.0": { "$exists": true } }).select('Name LastName Packages');
 
-        return res.status(200).json(allServices);
+        const allPackages = clients.flatMap(c =>
+            c.Packages.map(p => ({
+                ...p.toObject(),
+                ClientName: `${c.Name.FirstName} ${c.LastName.FatherLastName}`
+            }))
+        );
+
+        return res.status(200).json(allPackages);
     } catch (error) {
         console.log(error);
         return res.status(500).json({ message: 'Server Error' });
     }
-}
+};
 
 //Ver un solo servicio
 export const viewOneService = async(req, res) => {

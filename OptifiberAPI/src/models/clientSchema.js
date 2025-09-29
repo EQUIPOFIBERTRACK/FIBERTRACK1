@@ -76,7 +76,15 @@ const clientSchema = new mongoose.Schema ({
     },
     Status: {
         type: String
-    }
+    },
+    Packages: [{
+        Folio: { type: String, required: true },
+        Name: { type: String, required: true },
+        Type: { type: String, required: true },
+        Price: { type: Number, required: true },
+        Platforms: [{ name: String }],
+        AssignedDate: { type: Date, default: Date.now }
+    }]
 });
 
 export default model('client',clientSchema);

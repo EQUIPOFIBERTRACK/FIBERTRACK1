@@ -22,7 +22,7 @@ function PackagesCard({ packages = [], onSelected }) {
 
     const filteredData = packages.filter(pkg => {
     const folio = pkg.Folio?.toString() ?? '';
-    const clientName = `${pkg.Client?.Name?.FirstName ?? ''} ${pkg.Client?.Name?.SecondName ?? ''} ${pkg.Client?.LastName?.FatherLastName ?? ''} ${pkg.Client?.LastName?.MotherLastName ?? ''}`.trim();
+    const clientName = pkg.ClientName ?? '';
     const packageName = pkg.Name ?? '';
     const type = pkg.Type ?? '';
     const price = pkg.Price?.toString() ?? '';
@@ -40,8 +40,8 @@ function PackagesCard({ packages = [], onSelected }) {
         bValue = b.Folio ?? '';
         break;
       case 'Cliente':
-        aValue = `${a.Client?.Name?.FirstName ?? ''} ${a.Client?.Name?.SecondName ?? ''} ${a.Client?.LastName?.FatherLastName ?? ''} ${a.Client?.LastName?.MotherLastName ?? ''}`.trim();
-        bValue = `${b.Client?.Name?.FirstName ?? ''} ${b.Client?.Name?.SecondName ?? ''} ${b.Client?.LastName?.FatherLastName ?? ''} ${b.Client?.LastName?.MotherLastName ?? ''}`.trim();
+        aValue = a.ClientName ?? '';
+        bValue = b.ClientName ?? '';
         break;
       case 'Nombre del paquete':
         aValue = a.Name ?? '';
@@ -111,7 +111,7 @@ function PackagesCard({ packages = [], onSelected }) {
               <tr className={styleTable['selected-row']}
                 key={pkg._id} onClick={() => onSelected?.(pkg)}>
                 <td>{pkg.Folio}</td>
-                <td>{`${pkg.Client?.Name?.FirstName ?? ''} ${pkg.Client?.Name?.SecondName ?? ''} ${pkg.Client?.LastName?.FatherLastName ?? ''} ${pkg.Client?.LastName?.MotherLastName ?? ''}`}</td>
+                <td>{pkg.ClientName}</td>
                 <td>{pkg.Name}</td>
                 <td>{pkg.Type}</td>
                 <td>{pkg.Price}</td>
